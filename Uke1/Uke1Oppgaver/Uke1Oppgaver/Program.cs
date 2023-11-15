@@ -6,12 +6,60 @@ namespace Uke1Oppgaver
     {
         static void Main(string[] args)
         {
-            variables8();
-            regnestykke();
-            Console.WriteLine($"Summen av 5 + 8 er: {tallInnOgUt(5, 8)}");
-            denneReturnererIngenting();
-            hobbyGenerator();
-            gjettIgjen();
+            bool cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Skriv tallet til oppgaven du vil se:\n" +
+                                  "1. 8 variabler\n" +
+                                  "2. Regnestykke\n" +
+                                  "3. En funksjon som ikke returnerer noe\n" +
+                                  "4. Hobbygenerator\n" +
+                                  "5. Gjett tallet\n" +
+                                  "6. Sammenlign to tall\n" +
+                                  "7. Krokodillespillet");
+                              
+                string valg = Console.ReadLine();
+
+                switch (valg)
+                {
+                    case "1":
+                        variables8();
+                        break;
+                    case "2":
+                        Console.WriteLine($"Summen av 5 + 8 er: {tallInnOgUt(5, 8)}");
+                        break;
+                    case "3":
+                        denneReturnererIngenting();
+                        break;
+                    case "4":
+                        hobbyGenerator();
+                        break;
+                    case "5":
+                        gjettIgjen();
+                        break;
+                    case "6":
+                        Console.WriteLine("Skriv et tall:");
+                        int tall1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Skriv et tall til:");
+                        int tall2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"Det første tallet og det andre tallet som ble skrevet er likt? {sjekkTall(tall1, tall2)}");
+                        break;
+                    case "7":
+                        krokodillespillet();
+                        break;
+                    default:
+                        Console.WriteLine("Ingen oppgave valgt.");
+                        break;
+                } 
+
+                Console.WriteLine("Se flere oppgaver? (Y/N)");
+                string svar = Console.ReadLine();
+                if (svar.Equals("N") || svar.Equals("n"))
+                {
+                    cont = false;
+                }
+            }
         }
 
         static void variables8()
@@ -104,6 +152,87 @@ namespace Uke1Oppgaver
             while (fortsette)
             {
                 gjettTallet();
+                Console.WriteLine("Vil du prøve igjen? (Y/N)");
+                string input = Console.ReadLine();
+                if (input.Equals("N") || input.Equals("n"))
+                {
+                    fortsette = false;
+                }
+            }
+        }
+
+        static bool sjekkTall(int tall1, int tall2)
+        {
+            if (tall1 == tall2)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        static void krokodillespillet()
+        {
+            int score = 0;
+            Random rndm = new Random();
+            bool fortsette = true;
+
+            while (fortsette)
+            {
+                int tall1 = rndm.Next(1, 11);
+                int tall2 = rndm.Next(1, 11);
+
+                Console.WriteLine($"Hvilket tall er størst, eller er de like? Svar ved å bruke '<' '>' eller '='\n" +
+                                  $"{tall1} _ {tall2}");
+
+                string valg = Console.ReadLine();
+                switch (valg)
+                {
+                    case "<":
+                        if (tall1 < tall2)
+                        {
+                            score++;
+                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
+                        }
+                        else
+                        {
+                            score--;
+                            Console.WriteLine($"Du svarte feil.-1 poeng. Din score er nå {score}");
+                        }
+
+                        break;
+                    case ">":
+                        if (tall1 > tall2)
+                        {
+                            score++;
+                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
+                        }
+                        else
+                        {
+                            score--;
+                            Console.WriteLine($"Du svarte feil. -1 poeng. Din score er nå {score}");
+                        }
+
+                        break;
+                    case "=":
+                        if (tall1 == tall2)
+                        {
+                            score++;
+                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
+                        }
+                        else
+                        {
+                            score--;
+                            Console.WriteLine($"Du svarte feil.-1 poeng. Din score er nå {score}");
+                        }
+
+                        break;
+                    default:
+                        Console.WriteLine("Du skrev ikke inn noen gyldige svaralternativer. Spillet avsluttes og score nullstilles\n" +
+                                          $"Din score ble {score}");
+                        score = 0;
+                        break;
+                }
                 Console.WriteLine("Vil du prøve igjen? (Y/N)");
                 string input = Console.ReadLine();
                 if (input.Equals("N") || input.Equals("n"))
