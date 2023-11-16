@@ -13,40 +13,44 @@ namespace Uke1Oppgaver
                 Console.WriteLine("Skriv tallet til oppgaven du vil se:\n" +
                                   "1. 8 variabler\n" +
                                   "2. Regnestykke\n" +
+                                  "2.5.Desimal\n" +
                                   "3. En funksjon som ikke returnerer noe\n" +
                                   "4. Hobbygenerator\n" +
                                   "5. Gjett tallet\n" +
                                   "6. Sammenlign to tall\n" +
-                                  "7. Krokodillespillet");
+                                  "7. Krokodillespillet\n" +
+                                  "8. Lag din egen pokemon!");
                               
                 string valg = Console.ReadLine();
 
                 switch (valg)
                 {
                     case "1":
-                        variables8();
+                        Variables8();
                         break;
                     case "2":
-                        Console.WriteLine($"Summen av 5 + 8 er: {tallInnOgUt(5, 8)}");
+                        Console.WriteLine($"Summen av 5 + 8 er: {TallInnOgUt(5, 8)}");
+                        break;
+                    case "2.5":
+                        Desimal();
                         break;
                     case "3":
-                        denneReturnererIngenting();
+                        DenneReturnererIngenting();
                         break;
                     case "4":
-                        hobbyGenerator();
+                        HobbyGenerator();
                         break;
                     case "5":
-                        gjettIgjen();
+                        GjettIgjen();
                         break;
                     case "6":
-                        Console.WriteLine("Skriv et tall:");
-                        int tall1 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Skriv et tall til:");
-                        int tall2 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"Det første tallet og det andre tallet som ble skrevet er likt? {sjekkTall(tall1, tall2)}");
+                        SammenlignTall();
                         break;
                     case "7":
-                        krokodillespillet();
+                        Krokodillespillet.krokodillespillet();
+                        break;
+                    case "8":
+                        LagPokemon();
                         break;
                     default:
                         Console.WriteLine("Ingen oppgave valgt.");
@@ -62,7 +66,31 @@ namespace Uke1Oppgaver
             }
         }
 
-        static void variables8()
+        private static void SammenlignTall()
+        {
+            Console.WriteLine("Skriv et tall:");
+            int tall1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Skriv et tall til:");
+            int tall2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Det første tallet og det andre tallet som ble skrevet er likt? {SjekkTall(tall1, tall2)}");
+        }
+
+        private static void LagPokemon()
+        {
+            Random rndm = new Random();
+            int level = rndm.Next(0, 11);
+            int health = rndm.Next(0, 21);
+            Console.WriteLine("Lag din egen pokemon!\nSkriv inn hvilken type pokemon:");
+            string pokemonType = Console.ReadLine();
+            Console.WriteLine("Skriv nå inn navnet til pokemonen:");
+            string name = Console.ReadLine();
+            Console.WriteLine(
+                $"Flott! Pokemonen din, {name}, har fått en tilfeldig level: {level} og en tilfeldig mengde HP: {health}");
+            var pokemon = new Pokemon(level, name, health, pokemonType);
+            Console.WriteLine(pokemon.showInfo());
+        }
+
+        static void Variables8()
         {
             // int, long, float, decimal, double, string, char og bool.
             int tall = 1;
@@ -77,7 +105,7 @@ namespace Uke1Oppgaver
             Console.WriteLine($"Int = {tall}, long = {lang}, float = {flyt}, decimal = {desimal}, double = {dobbel}, string = {tekst}, char = {tegn}, bool = {boolean}");
         }
 
-        static void regnestykke()
+        static void Desimal()
         {
             int a = 5;
             double b = 3.0;
@@ -86,17 +114,17 @@ namespace Uke1Oppgaver
             Console.WriteLine("sum må være av typen double siden det kun er snakk om 1 desimal (det samme gjelder 'b')");
         }
 
-        static int tallInnOgUt(int tall1, int tall2)
+        static int TallInnOgUt(int tall1, int tall2)
         {
             return tall1 + tall2;
         }
 
-        static void denneReturnererIngenting()
+        static void DenneReturnererIngenting()
         {
             Console.WriteLine("Denne metoden returnerer ingenting");
         }
 
-        static void hobbyGenerator()
+        static void HobbyGenerator()
         {
             bool fortsette = true;
             Random rndm = new Random();
@@ -116,7 +144,7 @@ namespace Uke1Oppgaver
             }
         }
 
-        static void gjettTallet()
+        static void GjettTallet()
         {
             Random rndm = new Random();
             int newNumber = rndm.Next(1, 101);
@@ -146,12 +174,12 @@ namespace Uke1Oppgaver
             }
         }
 
-        static void gjettIgjen()
+        static void GjettIgjen()
         {
             bool fortsette = true;
             while (fortsette)
             {
-                gjettTallet();
+                GjettTallet();
                 Console.WriteLine("Vil du prøve igjen? (Y/N)");
                 string input = Console.ReadLine();
                 if (input.Equals("N") || input.Equals("n"))
@@ -161,7 +189,7 @@ namespace Uke1Oppgaver
             }
         }
 
-        static bool sjekkTall(int tall1, int tall2)
+        static bool SjekkTall(int tall1, int tall2)
         {
             if (tall1 == tall2)
             {
@@ -169,77 +197,6 @@ namespace Uke1Oppgaver
             }
 
             return false;
-        }
-
-        static void krokodillespillet()
-        {
-            int score = 0;
-            Random rndm = new Random();
-            bool fortsette = true;
-
-            while (fortsette)
-            {
-                int tall1 = rndm.Next(1, 11);
-                int tall2 = rndm.Next(1, 11);
-
-                Console.WriteLine($"Hvilket tall er størst, eller er de like? Svar ved å bruke '<' '>' eller '='\n" +
-                                  $"{tall1} _ {tall2}");
-
-                string valg = Console.ReadLine();
-                switch (valg)
-                {
-                    case "<":
-                        if (tall1 < tall2)
-                        {
-                            score++;
-                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
-                        }
-                        else
-                        {
-                            score--;
-                            Console.WriteLine($"Du svarte feil.-1 poeng. Din score er nå {score}");
-                        }
-
-                        break;
-                    case ">":
-                        if (tall1 > tall2)
-                        {
-                            score++;
-                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
-                        }
-                        else
-                        {
-                            score--;
-                            Console.WriteLine($"Du svarte feil. -1 poeng. Din score er nå {score}");
-                        }
-
-                        break;
-                    case "=":
-                        if (tall1 == tall2)
-                        {
-                            score++;
-                            Console.WriteLine($"Korrekt! +1 poeng! Din score er nå {score}");
-                        }
-                        else
-                        {
-                            score--;
-                            Console.WriteLine($"Du svarte feil.-1 poeng. Din score er nå {score}");
-                        }
-
-                        break;
-                    default:
-                        Console.WriteLine("Du skrev ikke inn noen gyldige svaralternativer. Spillet avsluttes og score nullstilles\n" +
-                                          $"Din score ble {score}");
-                        score = 0;
-                        break;
-                }
-                Console.WriteLine("Vil du prøve igjen? (Y/N)");
-                string input = Console.ReadLine();
-                if (input.Equals("N") || input.Equals("n"))
-                {
-                    fortsette = false;
-                }
-            }
         }
     }
 }
