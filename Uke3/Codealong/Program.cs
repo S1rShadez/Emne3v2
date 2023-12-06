@@ -10,8 +10,8 @@
             var bil1 = new Race("1");
             var bil2 = new Race("2");
 
-            Thread thread1 = new Thread(new ThreadStart(bil1.DriveRace));
-            Thread thread2 = new Thread(new ThreadStart(bil2.DriveRace));
+            Thread thread1 = new Thread(bil1.DriveRace);
+            Thread thread2 = new Thread(bil2.DriveRace);
 
             thread1.Start();
             thread2.Start();
