@@ -1,10 +1,18 @@
-﻿namespace ParProg
+﻿using Newtonsoft.Json;
+
+namespace ParProg
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Pokemon game!");
+            // Read the contents of the JSON file into a string variable
+            string json = File.ReadAllText("C:\\Users\\S1rShadez\\Documents\\GitHub\\Emne3v2\\Uke5\\ParProg\\pokemonData\\pokedex.json");
+
+            // Deserialize the JSON string into an object
+            List<Pokemon> pokemon = JsonConvert.DeserializeObject<List<Pokemon>>(json);
+
+            Console.WriteLine("Welcome to the Pokemon game!\n");
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
 
@@ -15,20 +23,22 @@
             switch (Console.ReadLine())
             {
                 case "1":
-                    starter = new Pokemon("Treecko");
+                    starter = pokemon.Find(p => p.name.english == "Treecko");
                     break;
                 case "2":
-                    starter = new Pokemon("Torchic");
+                    starter = pokemon.Find(p => p.name.english == "Torchic");
                     break;
                 case "3":
-                    starter = new Pokemon("Mudkip");
+                    starter = pokemon.Find(p => p.name.english == "Mudkip");
                     break;
                 default:
-                    starter = new Pokemon("Pikachu");
+                    starter = pokemon.Find(p => p.name.english == "Pikachu");
                     break;
             }
-            
-            Trainer trainer = new Trainer(name, starter, new Items("Pokeballs", "A ball used to catch pokemon", 5));
+
+            List<Items> starterItems = new List<Items>() { new(1, "Pokeball", "A ball used to catch pokemon", 5), new(2, "Potion", "Restores 20 HP for a pokemon", 5, healAmount: 20) };
+
+            Trainer trainer = new Trainer(name, starter, starterItems);
 
             Game.run(trainer);
         }

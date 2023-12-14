@@ -1,18 +1,37 @@
 ﻿namespace ParProg
 {
-    internal class Pokemon
+    public class Pokemon
     {
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public int MaxHealth;
-        public int CurrentHP;
 
-        public Pokemon(string name, int level = 1, int maxHealth = 12)
+        public int id { get; set; }
+        public Name name { get; set; }
+        public List<string> type { get; set; }
+        public Base @base { get; set; }
+
+
+        public class Name
         {
-            Name = name;
-            Level = level;
-            MaxHealth = maxHealth;
-            CurrentHP = maxHealth;
+            public string english { get; set; }
+            public string japanese { get; set; }
+            public string chinese { get; set; }
+            public string french { get; set; }
+        }
+
+        public class Base
+        {
+            public Base()
+            {
+                CurrentHP = HP;
+            }
+
+            public int Level { get; set; } = 1;
+            public int HP { get; set; }
+            public int CurrentHP { get; set; }
+            public int Attack { get; set; }
+            public int Defense { get; set; }
+            public int SpAttack { get; set; }
+            public int SpDefense { get; set; }
+            public int Speed { get; set; }
         }
 
     }

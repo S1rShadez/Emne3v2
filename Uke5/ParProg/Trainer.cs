@@ -13,13 +13,28 @@
             Items = new List<Items>(){item};
         }
 
+        //Constructor overload for adding multiple starter items with a list
+        public Trainer(string name, Pokemon starter, List<Items> items)
+        {
+            Name = name;
+            Pokemons = new List<Pokemon>(){starter};
+            Items = items;
+        }
+
 
         public string getPokemons()
         {
             string pokemons = "";
 
             for (int i = 0; i < Pokemons.Count; i++) {
-                pokemons += $"{i+1}. {Pokemons[i].Name}, HP: {Pokemons[i].CurrentHP}/{Pokemons[i].MaxHealth}, lvl: {Pokemons[i].Level}\n";    
+                pokemons += $"{i+1}. {Pokemons[i].name.english}:\n" +
+                            $"      lvl: {Pokemons[i].@base.Level}\n" +
+                            $"      HP: {Pokemons[i].@base.CurrentHP}/{Pokemons[i].@base.HP}\n" +
+                            $"      Attack: {Pokemons[i].@base.Attack}\n" +
+                            $"      Defense: {Pokemons[i].@base.Defense}\n" +
+                            $"      SP Attack: {Pokemons[i].@base.SpAttack}\n" +
+                            $"      SP Defense: {Pokemons[i].@base.SpDefense}\n" +
+                            $"      Speed: {Pokemons[i].@base.Speed}\n";    
             }
 
             return pokemons;

@@ -31,6 +31,8 @@
                         break;
                     default:
                         Console.WriteLine("No valid option selected, please try again.");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         break;
                 }
             }
