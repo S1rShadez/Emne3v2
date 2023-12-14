@@ -1,6 +1,6 @@
 ﻿namespace ParProg
 {
-    internal class Action
+    internal class Game
     {
         public static void run(Trainer trainer)
         {
@@ -9,7 +9,7 @@
             while (cont)
             {
                 Console.Clear();
-                Console.WriteLine("What would you like to do?\n1. Adventure\n2. Shop\n3. Inventory\n4. Pokemon inventory");
+                Console.WriteLine("What would you like to do?\n1. Adventure\n2. Shop\n3. Inventory\n4. Pokemon inventory\n10. Quit Game");
                 string choice = Console.ReadLine();
 
                 switch (choice)
@@ -25,6 +25,9 @@
                         break;
                     case "4":
                         ShowPokemons(trainer);
+                        break;
+                    case "10":
+                        cont = false;
                         break;
                     default:
                         Console.WriteLine("No valid option selected, please try again.");
