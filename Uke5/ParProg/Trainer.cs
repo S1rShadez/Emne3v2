@@ -1,16 +1,18 @@
 ﻿namespace ParProg
 {
-    internal class Trainer
+    public class Trainer
     {
-        public string Name {get;set;}
-        public List<Pokemon> Pokemons {get;set;}
-        public List<Items> Items {get;set;}
+        public string Name;
+        public List<Pokemon> Pokemons;
+        public List<Items> Items;
+        public int Money;
 
         public Trainer(string name, Pokemon starter, Items item)
         {
             Name = name;
             Pokemons = new List<Pokemon>(){starter};
             Items = new List<Items>(){item};
+            Money = 100;
         }
 
         //Constructor overload for adding multiple starter items with a list
@@ -19,6 +21,7 @@
             Name = name;
             Pokemons = new List<Pokemon>(){starter};
             Items = items;
+            Money = 100;
         }
 
 
