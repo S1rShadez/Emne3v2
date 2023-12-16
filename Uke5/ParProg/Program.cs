@@ -12,7 +12,7 @@ namespace ParProg
             //var path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\pokemonData\\pokedex.json");
             //var path = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\pokedex.json");
 
-            ConvertCSV.readCSV();
+            //readPokemonCSV.readCSV();
 
             // Read the contents of the JSON file into a string variable
             string json = File.ReadAllText("..\\..\\..\\pokedex.json", Encoding.Default);
@@ -58,4 +58,5 @@ namespace ParProg
             return starter;
         }
     }
+
 }

@@ -54,6 +54,8 @@ public class Shop
             trainer.Money -= shopItem.Price * amount;
             shopItem.Amount -= amount;
             Console.WriteLine($"{amount} x {shopItem.Name} successfully purchased");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
         else if (shopItem.Amount < amount)
         {
