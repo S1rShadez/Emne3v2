@@ -35,12 +35,17 @@
                         cont = false;
                         break;
                     default:
-                        Console.WriteLine("No valid option selected, please try again.");
-                        Console.WriteLine("Press any key to continue");
-                        Console.ReadKey();
+                        NotValid();
                         break;
                 }
             }
+        }
+
+        public static void NotValid()
+        {
+            Console.WriteLine("No valid option selected, please try again.");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
 
         private static void VisitShop(Trainer trainer, Shop PokeShop)

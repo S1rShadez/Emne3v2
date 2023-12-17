@@ -42,8 +42,8 @@ public class Shop
         Console.Clear();
         Console.WriteLine(shop.ShowStock(trainer));
         Console.WriteLine("Please enter the ID of the product you'd like to purchase:");
-        int purchaseID = Convert.ToInt16(Console.ReadLine());
-        var shopItem = shop.ShopStock.Find(x => x.ID == purchaseID);
+        int purchaseId = Convert.ToInt16(Console.ReadLine());
+        var shopItem = shop.ShopStock.Find(x => x.ID == purchaseId);
         Console.Clear();
         Console.WriteLine($"Please enter how many you would like of {shopItem.Name}\nPrice: {shopItem.Price}");
         int amount = Convert.ToInt16(Console.ReadLine());

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Reflection;
 using System.Text;
 
 namespace ParProg
@@ -8,11 +7,7 @@ namespace ParProg
     {
         static void Main(string[] args)
         {
-            //Finds the relative path of the JSON document
-            //var path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\pokemonData\\pokedex.json");
-            //var path = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\pokedex.json");
-
-            //readPokemonCSV.readCSV();
+            //readPokemonCSV.readCSV(); //This is for later iterations of the game where more stats etc is needed
 
             // Read the contents of the JSON file into a string variable
             string json = File.ReadAllText("..\\..\\..\\pokedex.json", Encoding.Default);
