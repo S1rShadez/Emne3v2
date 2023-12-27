@@ -188,7 +188,7 @@ namespace PokemonAPI
                             //move.Result.EffectEntries.ForEach(x => Console.WriteLine("-Effect: " + x.Effect));
 
                             //Console.WriteLine();
-                            saveMoves.Add(new SavePokemon.Moves(mName, dmgType, elementType, accuracy, power, critRate, pp, targetType, ailmentChance, statChance, flinchChance, effectChance, minTurns, maxTurns, minHits, maxHits, healAmount, drain, recoil, effectText));
+                            saveMoves.Add(new SavePokemon.Moves(learnedLvl, learnMethod, mName, dmgType, elementType, accuracy, power, critRate, pp, targetType, ailmentChance, statChance, flinchChance, effectChance, minTurns, maxTurns, minHits, maxHits, healAmount, drain, recoil, effectText));
                         }
                     }
                 }
@@ -227,6 +227,8 @@ namespace PokemonAPI
             public class Moves
             {
                 public string MoveName;
+                public int LearnedLvl;
+                public string LearnMethod;
                 public string DamageClass;
                 public string ElementalType;
                 public int Accuracy;
@@ -247,8 +249,10 @@ namespace PokemonAPI
                 public int Recoil;
                 public List<string> Effects;
 
-                public Moves(string moveName, string damageClass, string elementalType, int accuracy, int power, int critRate, int pp, string targetType, int ailmentCh, int statCh, int flinchCh, int? effectCh, int minTurns, int maxTurns, int minHits, int maxHits, int healing, int drain, int recoil, List<string> effects)
+                public Moves(int learnLvl, string learnMethod, string moveName, string damageClass, string elementalType, int accuracy, int power, int critRate, int pp, string targetType, int ailmentCh, int statCh, int flinchCh, int? effectCh, int minTurns, int maxTurns, int minHits, int maxHits, int healing, int drain, int recoil, List<string> effects)
                 {
+                    LearnedLvl = learnLvl;
+                    LearnMethod = learnMethod;
                     MoveName = moveName;
                     DamageClass = damageClass;
                     ElementalType = elementalType;
