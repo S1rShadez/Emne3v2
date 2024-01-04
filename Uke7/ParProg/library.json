@@ -1,0 +1,38 @@
+{
+  "LibraryName": "MegaFancy Bibliotek",
+  "BookLibrary": [
+    {
+      "Title": "The Catcher in the Rye",
+      "Author": "J.D. Salinger",
+      "ISBN": "9780316769488",
+      "PublicationYear": 1951
+    },
+    {
+      "Title": "The Catcher of std's",
+      "Author": "Harry Potter",
+      "ISBN": "9780316769999",
+      "PublicationYear": 2051
+    },
+    {
+      "Title": "The Rye",
+      "Author": "Salinger",
+      "ISBN": "916769488",
+      "PublicationYear": 1851
+    },
+    {
+      "Title": "dgfhdgfh",
+      "Author": "dgfhfgdh",
+      "ISBN": "12352354",
+      "PublicationYear": 1234
+    }
+  ],
+  "EBookLibrary": [
+    {
+      "FileSizeInMB": 25,
+      "Title": "The Catcher",
+      "Author": "J.D. Salinger",
+      "ISBN": "9780769488",
+      "PublicationYear": 1952
+    }
+  ]
+}

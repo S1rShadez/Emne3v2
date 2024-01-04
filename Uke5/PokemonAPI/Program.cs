@@ -45,7 +45,7 @@ namespace PokemonAPI
             var gen1 = GetGenerationAsync();
 
             int progress = gen1.Result.PokemonSpecies.Count();
-            int progression = progress/100;
+            int progression = progress / 100;
             int currentProgression = progression;
 
             //Task.WaitAll(pokemon, gen1);
@@ -177,7 +177,7 @@ namespace PokemonAPI
                             int recoil = 0; //HP RECOIL
                             if (move.Result.Meta.Drain > 0) drain = move.Result.Meta.Drain;
                             else if (move.Result.Meta.Drain < 0) recoil = move.Result.Meta.Drain;
-                            
+
                             /*if (move.Result.Meta.Drain > 0) Console.WriteLine("-HP drain: " + move.Result.Meta.Drain + "%");
                             else Console.WriteLine("-HP drain: 0%");*/
                             /*if (move.Result.Meta.Drain < 0) Console.WriteLine("-Recoil dmg: " + move.Result.Meta.Drain + "%");
@@ -201,8 +201,12 @@ namespace PokemonAPI
 
                 //Console.ReadKey();
             }
-            
-            string json = JsonConvert.SerializeObject(gen1List);
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            string json = JsonConvert.SerializeObject(gen1List, settings);
             //Console.WriteLine(json);
             File.WriteAllText("C:\\Users\\S1rShadez\\Documents\\GitHub\\Emne3v2\\Uke5\\PokemonAPI\\pokeData.json", json);
             Console.WriteLine("JSON file saved!");
