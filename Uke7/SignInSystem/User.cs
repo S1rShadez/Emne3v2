@@ -16,5 +16,10 @@ namespace SignInSystem
             this.id = id;
             this.name = username;
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

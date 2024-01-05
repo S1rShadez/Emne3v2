@@ -12,19 +12,23 @@ namespace SignInSystem
     {
         static void Main(string[] args)
         {
-            User currentUser /*= StartSystem()*/;
+            User currentUser = StartSystem();
+            //Console.WriteLine(currentUser.ToString());
         }
 
         private static User StartSystem()
         {
+            User user = null;
             while (true)
             {
                 switch (AskUser("Welcome!\n1. Sign in\n2. Create user\n10. Exit"))
                 {
                     case "1":
+                        //user == SignedInUser
                         break;
                     case "2":
-                        return NewUser();
+                        user = NewUser();
+                        break;
                     case "10":
                         Console.WriteLine("Exiting...");
                         Environment.Exit(0);
@@ -35,6 +39,7 @@ namespace SignInSystem
                 }
                 break;
             }
+            return user;
         }
 
         private static User NewUser()
