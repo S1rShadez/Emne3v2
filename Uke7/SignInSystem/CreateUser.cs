@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace SignInSystem
 {
     internal class CreateUser
     {
-        private string _id;
-        private string _uName;
-        private string _pWord;
+        public string _id { get; set; }
+        public string _uName { get; set; }
+        public string _pWord { get; set; }
 
         private void SetID(string id)
         {
@@ -20,7 +21,7 @@ namespace SignInSystem
 
         public void SetUName(string uName)
         {
-            _uName = Encrypt512(uName);
+            _uName = uName;
         }
 
         public void SetPWord(string pWord)
@@ -30,14 +31,23 @@ namespace SignInSystem
 
         public CreateUser(string uName, string pWord)
         {
-            SetID(uName+pWord);
+            SetID(uName + pWord + ManageUsers.UsersCount());
             SetUName(uName);
             SetPWord(pWord);
+            ManageUsers.AddUser(this);
         }
 
-        public User ReturnUser(string userName)
+        [JsonConstructor]
+        public CreateUser(string id, string uName, string pWord)
         {
-            return new User(_id, userName);
+            _id += id;
+            _uName = uName;
+            _pWord = pWord;
+        }
+
+        public User ReturnUser()
+        {
+            return new User(_id, _uName);
         }
 
         //Only for testing:
