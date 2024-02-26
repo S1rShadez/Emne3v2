@@ -61,6 +61,7 @@ namespace PokemonAPI
                 //Console.WriteLine(pokemon.Result.Name);
                 string pName = pokemon.Result.Name; //NAME
 
+                //list[0,1,2,3,4,(string health, int 50)]
                 List<(string statName, int baseStat)> pStats = new List<(string statName, int baseStat)> { }; //STATS LIST
                 //pokemon.Result.Stats.ForEach(x => Console.WriteLine(x.Stat.Name + ": " + x.BaseStat));
                 pokemon.Result.Stats.ForEach(x => pStats.Add((x.Stat.Name, x.BaseStat)));
@@ -208,7 +209,7 @@ namespace PokemonAPI
 
             string json = JsonConvert.SerializeObject(gen1List, settings);
             //Console.WriteLine(json);
-            File.WriteAllText("C:\\Users\\S1rShadez\\Documents\\GitHub\\Emne3v2\\Uke5\\PokemonAPI\\pokeData.json", json);
+            File.WriteAllText("pokeData.json", json);
             Console.WriteLine("JSON file saved!");
         }
 
